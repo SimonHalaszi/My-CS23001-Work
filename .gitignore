@@ -1,2 +1,11 @@
-./archive/fun/
-./archive/yap/
+# Ignore built files
+*.o
+*.out
+*.gch
+*.exe
+
+# Ignore local folders
+archive/fun/
+archive/yap/
+EVAL/
+.svn/
