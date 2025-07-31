@@ -1,0 +1,225 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing finding a string
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 1: " << std::endl;        
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findOne = "Hello";
+        String findTwo = "big";
+        String findThree = "N/A";
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findOne);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findOne << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+
+        whereFound = searchMe.findstr(0, findTwo);
+        assert(whereFound == 13);
+        std::cout << "Searching for: " << '"' << findTwo << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+
+        whereFound = searchMe.findstr(++whereFound, findTwo);
+        assert(whereFound == 17);
+        std::cout << "Searching for: " << '"' << findTwo << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+
+        whereFound = searchMe.findstr(0, findThree);
+        assert(whereFound == -1);
+        std::cout << "Searching for: " << '"' << findThree << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 2: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 3: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 4: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 5: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 6: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 7: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+/*
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 8: " << std::endl;         
+        
+        String searchMe = "Hello I am a big big string";
+        
+        String findMe = "Hello";
+
+
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        int whereFound = searchMe.findstr(0, findMe);
+        assert(whereFound == 0);
+        std::cout << "Searching for: " << '"' << findMe << '"' << std::endl; 
+        std::cout << "Found at index: " << whereFound << std::endl;
+    }
+*/
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 9 (EMPTY): " << std::endl;
+
+        // Test 
+        String searchMe;
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        // Verify
+        int assertOne = searchMe.findstr(0, String());
+        assert(assertOne == 0);
+        std::cout << "Null character found at first index" << std::endl;
+
+        assertOne = searchMe.findstr(0, "Not here");
+        assert(assertOne == -1);
+        std::cout << "Nothing else found in this string" << std::endl;         
+    }
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 10 (AT CAPACITY): " << std::endl;
+
+        // Test 
+        String searchMe = "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!";
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        // Verify
+        int assertOne = searchMe.findstr(0, "Hello");
+        assert(assertOne == 0);
+        std::cout << "String 'Hello' found at first index" << std::endl;
+
+        assertOne = searchMe.findstr(0, "CS!");
+        assert(assertOne == searchMe.capacity() - 3);
+        std::cout << "String 'CS!' found at index " << searchMe.capacity() - 3 << std::endl;  
+
+        assertOne = searchMe.findstr(0, "Not here");
+        assert(assertOne == -1);
+        std::cout << "String 'Not here' wasnt found in string" << std::endl;         
+    }    
+
+    std::cout << std::endl << "Dont testing find string." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+}

@@ -1,0 +1,62 @@
+#include "btree.hpp"
+#include <cassert>
+
+// TO COMPILE: clang++ -Wall btree.hpp main.cpp
+
+int main() {
+    btree<int> bitree(8);
+    bitree.insert(4);
+    bitree.insert(1);
+    bitree.insert(2);
+    bitree.insert(7);
+    bitree.insert(55);
+    bitree.insert(16);
+    bitree.insert(9);
+    bitree.insert(87);
+    bitree.insert(64);
+    bitree.insert(99);
+
+    std::cout << "Preorder: ";
+    bitree.preorder(std::cout);
+    std::cout << std::endl;
+    
+    std::cout << "Inorder: ";
+    bitree.inorder(std::cout);
+    std::cout << std::endl;
+
+    std::cout << "Postorder: ";
+    bitree.postorder(std::cout);
+    std::cout << std::endl;
+
+    // Will be true
+    assert(bitree.find(8));
+    assert(bitree.find(4));
+    assert(bitree.find(1));
+    assert(bitree.find(2));
+    assert(bitree.find(7));
+    assert(bitree.find(55));
+    assert(bitree.find(16));
+    assert(bitree.find(9));
+    assert(bitree.find(87));
+    assert(bitree.find(64));
+    assert(bitree.find(99));
+
+    std::cout << "All finds are true for every element" << std::endl;
+
+    // Will be flase
+    assert(!bitree.find(100));
+    assert(!bitree.find(5));
+    assert(!bitree.find(25));
+
+    std::cout << "All finds are false for non elements" << std::endl;
+
+    std::cout << "Depth of some elements: " << std::endl;
+    std::cout << "\tDepth of   8:  " << bitree.findDepth(8) << std::endl;
+    std::cout << "\tDepth of  16:  " << bitree.findDepth(16) << std::endl;
+    std::cout << "\tDepth of  55:  " << bitree.findDepth(55) << std::endl;
+    std::cout << "\tDepth of  99:  " << bitree.findDepth(99) << std::endl;
+    std::cout << "\tDepth of  64:  " << bitree.findDepth(64) << std::endl;
+    std::cout << "\tDepth of   7:  " << bitree.findDepth(7) << std::endl;
+    std::cout << "\tDepth of   2:  " << bitree.findDepth(2) << std::endl;
+    std::cout << "\tDepth of 100: " << bitree.findDepth(100) << std::endl; 
+}

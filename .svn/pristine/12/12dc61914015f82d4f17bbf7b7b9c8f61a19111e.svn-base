@@ -1,0 +1,78 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing eqaulity
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 1: " << std::endl;
+
+        // Test 
+        String stringA = 'A';
+        String stringB;
+        String stringC = String("Hello World!");
+
+        // Verify
+        assert(stringA == 'A');
+        assert('A' == stringA);
+        std::cout << "'A' == 'A'" << std::endl;
+
+        assert(stringB == '\0');
+        assert('\0' == stringB);
+        std::cout << "Empty String == Null Character" << std::endl;
+
+        assert(stringC == "Hello World!");
+        assert("Hello World!" == stringC);
+        std::cout << "Hello World! == Hello World!" << std::endl;
+
+        assert('B' != stringA);
+        std::cout << "'B' != A" << std::endl;
+
+        assert(stringB != '|');
+        std::cout << "Null Character != '|'" << std::endl;
+
+        assert("Hello Wod" != stringC);
+        std::cout << "Hello Wod != Hello World" << std::endl;
+    }
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 2 (EMPTY): " << std::endl;
+
+        // Test 
+        String emptyStringA;
+        String emptyStringB;
+
+        assert(emptyStringA == emptyStringB);
+
+        std::cout << "emptyStringA == emptyStringB" << std::endl;
+    }
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 2 (AT CAPACITY): " << std::endl;
+
+        // Test 
+        String capacityStringA = "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!";
+        String capacityStringB = "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!";
+
+        assert(capacityStringA == capacityStringB);
+
+        std::cout << "capacityStringA == capacityStringB" << std::endl;
+    }
+
+    std::cout << std::endl << "Dont testing equality." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+}

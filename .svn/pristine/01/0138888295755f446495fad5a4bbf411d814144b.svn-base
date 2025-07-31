@@ -1,0 +1,37 @@
+Grades are out of 100% - Comments are mostly for why points were taken off.
+
+P1
+
+m1: 95 - do not commit compiled files, i.e. .o, .out, etc...;
+m2: 95 - dont commit compiled files; 
+m3: 100
+
+bonus: 100
+
+
+P2
+
+m1: 90 (regrade) 
+m2: 100
+m3: 100
+m4: 100
+
+bonus: 
+
+P3
+
+m1: 95 - should be testing bounds for push/pop, assign, and copy -> i.e. empty stacks for lower and use loops to push and then pop and assert 100s of elements for upper;
+m2: 100
+m3: 
+
+bonus: 
+
+P4
+
+m1: 
+m2: 
+m3: 
+
+bonus: 
+
+

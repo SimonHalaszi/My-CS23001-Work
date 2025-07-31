@@ -1,0 +1,31 @@
+#include "utilities.hpp"
+
+// Takes in an input file stream and converts its infix contents to postfix
+String infixToPostfix(std::ifstream& file) { 
+    char token[8];
+    String right;
+    String left;
+    String op;
+
+    stack<String> stak;
+    
+    file >> token;
+
+    if(file.eof()) {
+        return '\0';
+    }
+
+    while( token[0] != ';' ) {
+        if( token[0] == ')' ) {
+            right = stak.pop();
+            op = stak.pop();
+            left = stak.pop();
+            stak.push(left + ' ' + right + ' ' + op);
+        } else if ( token[0] != '(') {
+            stak.push(token);
+        }
+        file >> token;
+    }
+    
+    return stak.pop();
+}

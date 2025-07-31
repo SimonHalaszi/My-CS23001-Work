@@ -1,0 +1,159 @@
+#include "utilities.hpp"
+
+int main(int argc, char *argv[]) {
+    
+    // Defining Streams
+    std::ifstream inpFile(argv[1]);
+    
+    std::ofstream outFile;
+    if(argc == 3) {
+        outFile.open(argv[2]);
+    }
+
+    // If input file didnt open thats not good.
+    if (!inpFile.is_open()) {
+        std::cout << "Unable to open file: " << argv[1] << std::endl;
+        exit(1);
+    }
+
+    String postfixExpr;
+    
+    // Calls infix to postfix function which takes the ifstream by reference.
+    // Else statement for whether we are printing to terminal or to a file.
+    if(argc != 3) {
+        while(!inpFile.eof()) {
+            postfixExpr = infixToPostfix(inpFile);
+            if(postfixExpr != "eof") {
+                std::cout << postfixExpr << std::endl;
+            }
+        }
+    } else {
+        while(!inpFile.eof()) {
+            postfixExpr = infixToPostfix(inpFile);
+            if(postfixExpr != "eof") {
+                outFile << postfixExpr << std::endl;
+            }
+        }
+        outFile.close();        
+    }
+
+    inpFile.close();
+}
+
+// With a space not brackets
+// #include "utilities.hpp"
+
+// int main() {
+//     std::cout << "provide an input file and output file seperated by a space" << std::endl;
+//     std::cout << "postfix ";
+    
+//     char inp[32];
+//     std::cin >> inp;
+
+//     char spaceChecker;
+//     std::cin >> std::noskipws;
+//     std::cin >> spaceChecker;
+    
+//     char out[32];
+//     if(spaceChecker != ' ') {
+//         std::cin >> std::skipws;
+//     } else {
+//         std::cin >> std::skipws;
+//         std::cin >> out;
+//     }
+    
+//     std::ifstream inpFile(inp);
+    
+//     std::ofstream outFile;
+//     if(spaceChecker == ' ') {
+//         outFile.open(out);
+//     }
+
+//     if (!inpFile.is_open()) {
+//         std::cout << "Unable to open file: " << inp << std::endl;
+//         exit(1);
+//     }
+
+//     String postfixExpr;
+    
+//     if(spaceChecker != ' ') {
+//         while(!inpFile.eof()) {
+//             postfixExpr = infixToPostfix(inpFile);
+//             if(postfixExpr != '\0') {
+//                 std::cout << postfixExpr << std::endl;
+//             }
+//         }
+//     } else {
+//         while(!inpFile.eof()) {
+//             postfixExpr = infixToPostfix(inpFile);
+//             if(postfixExpr != '\0') {
+//                 outFile << postfixExpr << std::endl;
+//             }
+//         }
+//         outFile.close();        
+//     }
+
+//     inpFile.close();
+// }
+
+// int main() {
+//     std::cout << "provide an input file and output file seperated by a space" << std::endl;
+//     std::cout << "postfix ";
+    
+//     // Getting name of input file.
+//     char inp[32];
+//     std::cin >> inp;
+
+//     // Buffer used for dealing with removing brackets
+//     char outBuffer[32];
+//     std::cin >> outBuffer;
+    
+//     // Deals with getting brackets off of output entry.
+//     char out[32];
+//     if(outBuffer != String("[]")) {
+//         int i = 1;
+//         while(outBuffer[i] != ']') {
+//             out[i - 1] = outBuffer[i];
+//             ++i;
+//         }
+//         out[i - 1] = '\0';
+//     }
+    
+//     // Defining Streams
+//     std::ifstream inpFile(inp);
+//     std::ofstream outFile;
+    
+//     // Out stream isnt intialized if no input
+//     if(outBuffer != String("[]")) {
+//         outFile.open(out);
+//     }
+
+//     // If input file didnt open thats not good.
+//     if (!inpFile.is_open()) {
+//         std::cout << "Unable to open file: " << inp << std::endl;
+//         exit(1);
+//     }
+
+//     String postfixExpr;
+    
+//     // Calls infix to postfix function which takes the instream by reference.
+//     // Else statement for whether we are printing to terminal or to a file.
+//     if(outBuffer == String("[]")) {
+//         while(!inpFile.eof()) {
+//             postfixExpr = infixToPostfix(inpFile);
+//             if(postfixExpr != '\0') {
+//                 std::cout << postfixExpr << std::endl;
+//             }
+//         }
+//     } else {
+//         while(!inpFile.eof()) {
+//             postfixExpr = infixToPostfix(inpFile);
+//             if(postfixExpr != '\0') {
+//                 outFile << postfixExpr << std::endl;
+//             }
+//         }
+//         outFile.close();        
+//     }
+
+//     inpFile.close();
+// }

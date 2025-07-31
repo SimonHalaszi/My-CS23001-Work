@@ -1,0 +1,16 @@
+Infix   Expression: ( ( AX + ( BY * C ) ) / ( D4 - E ) ) 
+Postfix Expression: AX BY C * + D4 E - /
+
+   LD   BY
+   MU   C
+   ST   TMP1
+   LD   AX
+   AD   TMP1
+   ST   TMP2
+   LD   D4
+   SB   E
+   ST   TMP3
+   LD   TMP2
+   DV   TMP3
+   ST   TMP4
+

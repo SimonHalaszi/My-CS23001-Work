@@ -1,0 +1,12 @@
+#include "../string/string.hpp"
+#include "../assembler/stack.hpp"
+#include <iostream>
+#include <fstream>
+
+// Takes in an input file stream and converts its infix contents to postfix. Takes a string by reference to record orginal infix.
+String infixToPostfix(std::ifstream&, String&);
+void toAssembly(const String&, std::ostream&);
+String evaluate(const String&, const String&, const String&, int&, std::ostream&);
+bool isOp(const String&);
+String whichOp(const String&);
+String intToString(int);

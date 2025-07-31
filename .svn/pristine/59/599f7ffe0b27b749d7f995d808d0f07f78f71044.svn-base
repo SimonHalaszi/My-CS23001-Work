@@ -1,0 +1,71 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing cString constructor
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 1: " << std::endl;
+
+        // Test 
+        String stringOne = "Hello,";
+        String stringTwo("World!");
+        String stringThree = String("Awesome.");
+
+        // Verify
+        assert(stringOne == "Hello,");
+        std::cout << "Hello, == Hello," << std::endl;
+
+        assert(stringTwo == "World!");
+        std::cout << "World! == World!" << std::endl;
+
+        assert(stringThree == "Awesome.");
+        std::cout << "Awesome. == Awesome." << std::endl;
+    }
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 2 (EMPTY): " << std::endl;
+
+        // Test 
+        String stringOne = "";
+
+        // Verify
+        assert(stringOne == String());
+        std::cout << "Null Character String == Empty String" << std::endl;
+    }
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 3 (AT CAPACITY): " << std::endl;
+
+        // Test 
+        String capacityString = "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!";
+
+        // Verify
+        assert(capacityString == "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!");
+        std::cout << "Constructed a string of max size successfully: " << std::endl;
+        std::cout << capacityString << std::endl;
+        assert(capacityString.length() == capacityString.capacity());
+
+        // Assertion commented out
+        // WILL FAIL. ASSERTION DOES NOT LET STRING GET ASSIGNED PAST CAPACITY.
+        // String capacityStringFail = "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!!";
+        // std::cout << capacityStringFail << std::endl;
+    }
+
+    std::cout << std::endl << "Dont testing char[] constructor." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+}

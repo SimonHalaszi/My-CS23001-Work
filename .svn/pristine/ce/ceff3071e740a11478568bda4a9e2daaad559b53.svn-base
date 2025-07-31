@@ -1,0 +1,53 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing eqaulity
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 1: " << std::endl;
+
+        // Test 
+        String stringA = 'A';
+        String stringB;
+        String stringC = String("Hello World!");
+
+        // Verify
+        assert(stringA == 'A');
+        assert('A' == stringA);
+        std::cout << "'A' == 'A'" << std::endl;
+
+        assert(stringB == '\0');
+        assert('\0' == stringB);
+        std::cout << "Empty String == Null Character" << std::endl;
+
+        assert(stringC == "Hello World!");
+        assert("Hello World!" == stringC);
+        std::cout << "Hello World! == Hello World!" << std::endl;
+
+        assert('B' != stringA);
+        std::cout << "'B' != A" << std::endl;
+
+        assert(stringB != '|');
+        std::cout << "Null Character != '|'" << std::endl;
+
+        assert("Hello Wod" != stringC);
+        std::cout << "Hello Wod != Hello World" << std::endl;
+
+    }
+
+    std::cout << std::endl << "Dont testing equality." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+}

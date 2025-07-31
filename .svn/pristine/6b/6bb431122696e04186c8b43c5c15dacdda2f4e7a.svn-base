@@ -1,0 +1,13 @@
+// string Test Program
+//
+// Tests: substring
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    {
+    }
+}

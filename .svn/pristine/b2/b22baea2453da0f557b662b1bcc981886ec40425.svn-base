@@ -1,0 +1,40 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing cString constructor
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 1: " << std::endl;
+
+        // Test 
+        String stringOne = "Hello,";
+        String stringTwo("World!");
+        String stringThree = String("Awesome.");
+
+        // Verify
+        assert(stringOne == "Hello,");
+        std::cout << "Hello, == Hello," << std::endl;
+
+        assert(stringTwo == "World!");
+        std::cout << "World! == World!" << std::endl;
+
+        assert(stringThree == "Awesome.");
+        std::cout << "Awesome. == Awesome." << std::endl;
+    }
+
+    std::cout << std::endl << "Dont testing char[] constructor." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+}

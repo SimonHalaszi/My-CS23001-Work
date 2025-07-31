@@ -1,0 +1,67 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing extraction operator
+
+#include <iostream>
+#include <fstream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    
+    std::ifstream in;               // Define input stream
+    in.open("inputTest.txt");            // Open a file
+    if(!in) {                       // Make sure file opened correctly
+        std::cerr << "File not found: data1-1.txt" << std::endl;
+        exit(1);
+    }
+    
+    String input;
+
+    std::cout << "Words read from file: " << std::endl;
+
+    in >> input;
+    assert(input == "Hello");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "World");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "Foo");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "Simon");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "Computer");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "Science");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "Coding");
+    std::cout << input << std::endl;
+
+    in >> input;
+    assert(input == "935092u3nefg098utj9u23r0jkrtojnqwrfu09duv9inweoknr5");
+    std::cout << input << std::endl;
+ 
+    in.close();
+    
+    std::cout << std::endl << "Dont testing input." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+    
+    return 0;  
+}

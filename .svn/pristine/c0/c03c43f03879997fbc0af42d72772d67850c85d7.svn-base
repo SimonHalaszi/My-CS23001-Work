@@ -1,0 +1,53 @@
+/*
+* Simon Halaszi
+* string project
+* CS23001
+*/
+
+// Testing length and capacity
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        std::cout << "-     Test 1: " << std::endl;
+        String stringOne = "Hello There!";
+        String stringTwo = "Foo Woo.";
+
+        assert(stringOne.capacity() == stringOne.length());
+
+        std::cout << "String Capacity: " << stringOne.capacity() << std::endl;
+
+        std::cout << "String One: " << '"' << stringOne << '"' << std::endl;
+        std::cout << "String One Length: " << stringOne.length() << std::endl;
+        
+        std::cout << "String Two: " << '"' << stringTwo << '"' << std::endl;
+        std::cout << "String Two Length: " << stringTwo.length() << std::endl;        
+    }
+    {
+        std::cout << "-     Test 2 (EMPTY): " << std::endl;
+        String stringOne;
+
+        assert(stringOne.length() == stringOne.length() - stringOne.capacity());
+
+        assert(stringOne.length() == 0);
+        std::cout << "Empty String has a length of zero." << std::endl;
+    }
+    {
+        std::cout << "-     Test 3 (AT CAPACITY): " << std::endl;
+        String stringOne = "Hello World, this is my very long String used for at-capacity testing. This String is two hundred and fifty-six characters long. That is including the null character at the end of the string. There isn't much else to say here about this string. I love CS!";
+
+        assert(stringOne.length() == stringOne.capacity());
+
+        assert(stringOne.length() == stringOne.capacity());
+        std::cout << "At capacity string length of the capacity" << std::endl;
+    }
+
+
+    std::cout << std::endl << "Dont testing length and capacity." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+}

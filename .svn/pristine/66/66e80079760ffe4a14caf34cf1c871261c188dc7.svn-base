@@ -1,0 +1,43 @@
+//  Stack class test program
+//
+//  Tests: XXX 
+//
+
+#include "stack.hpp"
+#include <cassert>
+#include <iostream>
+
+//===========================================================================
+int main ()
+{
+    {
+        //------------------------------------------------------
+        // SETUP FIXTURE
+        stack<int>  x;
+
+        {
+            int ele = 1;
+            std::cout << "Pushing " << ele << std::endl;
+
+            x.push(ele);
+            assert(x.top() == ele);
+
+            std::cout << "Element at top of stack == " << ele << std::endl;
+            
+            int poppedEle = x.pop();
+            assert(poppedEle == ele);
+
+            std::cout << "Element popped off stack == " << ele << std::endl;
+        }
+
+     }
+
+
+    // ADD ADDITIONAL TESTS AS NECESSARY
+    
+    std::cout << "------------------------------------------------------" << std::endl;
+    std::cout << "Done testing Push Pop." << std::endl;
+    std::cout << "------------------------------------------------------" << std::endl;
+    return 0;
+}
+

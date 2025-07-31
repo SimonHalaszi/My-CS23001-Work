@@ -1,0 +1,50 @@
+// string Test Program
+//
+// Tests: finding character
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    std::cout << "----------------------------------------------------" << std::endl;
+    {
+        //------------------------------------------------------
+        // Setup fixture
+        std::cout << "-     Test 1: " << std::endl;
+
+        // Test 
+        String searchMe = "Hello World, This is my string!";
+        std::cout << "Searching string: " << '"' << searchMe << '"' << std::endl;
+
+        // Verify
+        int assertOne = searchMe.findch(0, 'H');
+        assert(assertOne == 0);
+        std::cout << "'H' found at index 0." << std::endl;
+
+        int assertTwo = searchMe.findch(0, 'W');
+        assert(assertTwo == 6);
+        std::cout << "'W' found at index 6." << std::endl;
+
+        int assertThree = searchMe.findch(0, 'Z');
+        assert(assertThree == -1);
+        std::cout << "'Z' is not in this string." << std::endl;
+
+        int assertFour = searchMe.findch(0, 'i');
+        assert(assertFour == 15);
+        std::cout << "'i' found at index 15." << std::endl;
+
+        int assertFive = searchMe.findch(++assertFour, 'i');
+        assert(assertFive == 18);
+        std::cout << "'i' found at index 18." << std::endl;
+
+        int assertSix = searchMe.findch(++assertFive, 'i');
+        assert(assertSix == 27);
+        std::cout << "'i' found at index 27." << std::endl;
+    }
+
+    std::cout << std::endl << "Dont testing find character." << std::endl;
+    std::cout << "----------------------------------------------------" << std::endl;
+
+}

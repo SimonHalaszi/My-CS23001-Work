@@ -1,0 +1,7 @@
+#include "../string/string.hpp"
+#include "../assembler/stack.hpp"
+#include <vector>
+#include <iostream>
+#include <fstream>
+
+String infixToPostfix(std::ifstream&);

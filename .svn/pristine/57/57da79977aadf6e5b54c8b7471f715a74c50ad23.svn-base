@@ -1,0 +1,42 @@
+#include "utilities.hpp"
+
+int main(int argc, char *argv[]) {
+    
+    // Defining Streams
+    std::ifstream inpFile(argv[1]);
+    
+    std::ofstream outFile;
+    if(argc == 3) {
+        outFile.open(argv[2]);
+    }
+
+    // If input file didnt open thats not good.
+    if (!inpFile.is_open()) {
+        std::cout << "Unable to open file: " << argv[1] << std::endl;
+        exit(1);
+    }
+
+    String postfixExpr;
+    
+    // Calls infix to postfix function which takes the ifstream by reference.
+    // Else statement for whether we are printing to terminal or to a file.
+
+    if(argc != 3) {
+        while(!inpFile.eof()) {
+            postfixExpr = infixToPostfix(inpFile);
+            if(postfixExpr != "eof") {
+                std::cout << "Postfix Expression: " << postfixExpr << std::endl << std::endl;
+            }
+        }
+    } else {
+        while(!inpFile.eof()) {
+            postfixExpr = infixToPostfix(inpFile);
+            if(postfixExpr != "eof") {
+                outFile << "Postfix Expression: " << postfixExpr << std::endl << std::endl;
+            }
+        }
+        outFile.close();        
+    }
+
+    inpFile.close();
+}

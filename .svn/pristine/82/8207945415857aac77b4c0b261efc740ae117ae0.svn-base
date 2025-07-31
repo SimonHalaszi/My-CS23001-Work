@@ -1,0 +1,6 @@
+bubble_sort took up most of the program's time (37%). bubble_sort has a higher time complexity (n^2) than that of
+quick_sort (nlogn), but it also has the same time complexity as selection_sort and the worst case quick_sort (n^2).
+The reason bubble_sort takes so long is that it repeatedly compares adjacent elements and swaps them.
+It also searches over the whole vector for every run of the outer for loop, which is inefficient. The second 
+most amount of time was spent on the subscript operator for the vector (35%). This is mostly because it is called
+so many times (1.34 billion times) and in every loop in the program. The two together take up ~70% of the programs time. 

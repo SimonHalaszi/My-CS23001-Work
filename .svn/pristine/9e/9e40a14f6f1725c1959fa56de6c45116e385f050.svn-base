@@ -1,0 +1,117 @@
+//
+//
+// File:        logentry.cpp  
+//       
+// Version:     1.0
+// Date:        
+// Author:      
+//
+// Description: Class implementation for a log entry.
+//
+//
+ 
+#include "string.hpp"
+#include "logentry.hpp"
+
+// REQUIRES:
+// ENSURES:
+// Sets the values for LogEntry given a line from the log files.
+LogEntry::LogEntry(const String& line) : LogEntry() {
+    // Intial Split
+    std::vector<String> data = line.split(' ');
+    
+    if (data.size() == 10) {
+        host = data[0];
+
+        // Splitting Date and Time off from main vector.
+        std::vector<String> timeInfo = data[3].split(':');
+        // Splitting Date off from Time Info.
+        std::vector<String> dateInfo = timeInfo[0].split('/');
+
+        date = Date(dateInfo[0].substr(1, dateInfo[0].length()), dateInfo[1] , dateInfo[2]);
+        time = Time(timeInfo[1], timeInfo[2], timeInfo[3]);
+        
+        request = data[5] + " " + data[6] + " " + data[7];
+        
+        status = data[8];
+
+        // Checking if Byte number is there, if not, its 0 if it is setting number.
+        if(data[9] == '-')
+            number_of_bytes = 0;
+        else
+            number_of_bytes = data[9].toInt();
+
+    }
+}
+
+// REQUIRES:
+// ENSURES:
+// Makes a log entry for every line of a file and creates a vector of all of them 
+std::vector<LogEntry> parse(std::istream& in) {
+    std::vector<LogEntry> result;
+    
+    char temp[200];
+    String line;
+    
+    LogEntry log;
+
+    while(in.getline(temp, 200)) {
+        line = String(temp);
+        log = LogEntry(line);
+        result.push_back(log);
+    }
+
+    return result;
+}
+
+// Output overload
+std::ostream& operator<<(std::ostream& out, const LogEntry& log) {
+    out << "Host: " << log.host << std::endl;
+        
+    out << "Day: " << log.date.getDay() << std::endl;
+    out << "Month: " << log.date.getMonth() << std::endl;
+    out << "Year: " << log.date.getYear() << std::endl;
+        
+    out << "Hour: " << log.time.getHour() << std::endl;
+    out << "Minute: " << log.time.getMinute() << std::endl;
+    out << "Second: " << log.time.getSecond() << std::endl;
+
+    out << "Request: " << log.request << std::endl;
+    out << "Status: " << log.status << std::endl;
+    
+    out << "Bytes: " << log.number_of_bytes << std::endl << std::endl;
+
+    return out;
+}
+
+// REQUIRES:
+// ENSURES:
+// Prints out every log in a file
+void output_all(std::ostream& out, const std::vector<LogEntry>& logsVector) {
+    for(size_t i = 0; i < logsVector.size(); ++i) {
+        out << logsVector[i];
+    }
+}
+
+// REQUIRES:
+// ENSURES:
+// Prints out every ip in a file
+void by_host(std::ostream& out, const std::vector<LogEntry>& logsVector) {   
+    for(size_t i = 0; i < logsVector.size(); ++i) {
+        out << logsVector[i].getHost() << std::endl;
+    }
+}
+
+// REQUIRES:
+// ENSURES:
+// Sums all the bytes of all the logs in a file
+int byte_count(const std::vector<LogEntry>& logsVector) {    
+    int sum = 0;
+
+    for(size_t i = 0; i < logsVector.size(); ++i) {
+        sum += logsVector[i].getBytes();
+    }
+
+    return sum;
+}
+

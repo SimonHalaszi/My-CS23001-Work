@@ -1,0 +1,13 @@
+// string Test Program
+//
+// Tests: len cap
+
+#include <iostream> 
+#include <cassert>
+#include "string.hpp"
+
+//===========================================================================
+int main () {
+    {
+    }
+}

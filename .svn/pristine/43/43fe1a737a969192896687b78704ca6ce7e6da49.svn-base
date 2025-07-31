@@ -1,0 +1,54 @@
+#include "utilities.hpp"
+
+int main() {
+    std::cout << "provide an input file and output file seperated by a space" << std::endl;
+    std::cout << "postfix ";
+    
+    char inp[32];
+    std::cin >> inp;
+
+    char spaceChecker;
+    std::cin >> std::noskipws;
+    std::cin >> spaceChecker;
+    
+    char out[32];
+    if(spaceChecker != ' ') {
+        std::cin >> std::skipws;
+    } else {
+        std::cin >> std::skipws;
+        std::cin >> out;
+    }
+    
+    std::ifstream inpFile(inp);
+    
+    std::ofstream outFile;
+    if(spaceChecker == ' ') {
+        outFile.open(out);
+    }
+
+    if (!inpFile.is_open()) {
+        std::cout << "Unable to open file: " << inp << std::endl;
+        exit(1);
+    }
+
+    String postfixExpr;
+    
+    if(spaceChecker != ' ') {
+        while(!inpFile.eof()) {
+            postfixExpr = infixToPostfix(inpFile);
+            if(postfixExpr != '\0') {
+                std::cout << postfixExpr << std::endl;
+            }
+        }
+    } else {
+        while(!inpFile.eof()) {
+            postfixExpr = infixToPostfix(inpFile);
+            if(postfixExpr != '\0') {
+                outFile << postfixExpr << std::endl;
+            }
+        }
+        outFile.close();        
+    }
+
+    inpFile.close();
+}
