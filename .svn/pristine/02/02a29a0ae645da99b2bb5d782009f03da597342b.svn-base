@@ -1,8 +1,0 @@
-#include "../string/string.hpp"
-#include "../assembler/stack.hpp"
-#include <vector>
-#include <iostream>
-#include <fstream>
-
-// Takes in an input file stream and converts its infix contents to postfix
-String infixToPostfix(std::ifstream&);
