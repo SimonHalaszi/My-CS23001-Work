@@ -12,3 +12,6 @@ EVAL/
 fileio/fileio
 debug_lab01/buggy
 my_name_is/who.txt
+string/log_1_tiny.txt
+string/log_2_small.txt
+string/log_3_medium.txt
